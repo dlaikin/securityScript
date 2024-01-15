@@ -10,8 +10,9 @@ file = open("/etc/fail2ban/jail.local", "r+")
 lines = file.readlines()
 for each in lines:
     if "maxretry" in each and "#" not in each:
-        lines.set(lines.index(each), "maxretry = 2\n")
+        lines[lines.index(each)] = "maxretry = 2\n"
         break
+
 file.seek(0)
 file.writelines(lines)
 file.close()
